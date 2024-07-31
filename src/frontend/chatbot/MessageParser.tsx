@@ -2,8 +2,11 @@ import React from 'react';
 
 const MessageParser = ({ children, actions }: { children: any, actions: any }) => {
     const parse = (message: string) => {
-        if (message.toLowerCase().includes('hello')) {
+        if (message.toLowerCase().includes('hello') || message.toLowerCase().includes('hey') || message.toLowerCase().includes('hi')) {
             actions.handleGreetings();
+        }
+        else {
+            actions.handleResearchRequest(message);
         }
     };
 
