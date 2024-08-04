@@ -16,14 +16,12 @@ app.listen(port, () => {
 });
 
 app.post('/api', async (req, res) => {
-    const message = req.body.message;
-    console.log("Received message:", message);
-
+    const messages = req.body.message;
     try {
-        const response = await messageProcess(message);
-        res.json({ response });
+        const response = await messageProcess(messages);
+        const content = response.content;
+        res.json({ content });
     } catch (err) {
-        console.log("Error processing message:", err);
         res.status(500).json({ response: "Error processing message" });
     }
 });
