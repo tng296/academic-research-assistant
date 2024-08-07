@@ -4,6 +4,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import axios from 'axios';
 const port = process.env.PORT || 3001;
+const axriv = require('axriv-api');
 
 import messageProcess from './services/messageProcess.js';
 
@@ -20,7 +21,7 @@ app.post('/api', async (req, res) => {
     try {
         const response = await messageProcess(messages);
         const content = response.content;
-        res.json({ content });
+        res.send({ content });
     } catch (err) {
         res.status(500).json({ response: "Error processing message" });
     }
